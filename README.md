@@ -1,6 +1,6 @@
 [![platform](https://img.shields.io/badge/platform-Node--RED-red)](https://nodered.org)
-[![npm](https://img.shields.io/npm/v/red-contrib-gira-endpoint.svg)](https://www.npmjs.com/package/red-contrib-gira-endpoint)
-[![downloads](https://img.shields.io/npm/dt/red-contrib-gira-endpoint.svg)](https://www.npmjs.com/package/red-contrib-gira-endpoint)
+[![npm](https://img.shields.io/npm/v/node-red-contrib-gira-endpoint.svg)](https://www.npmjs.com/package/node-red-contrib-gira-endpoint)
+[![downloads](https://img.shields.io/npm/dt/node-red-contrib-gira-endpoint.svg)](https://www.npmjs.com/package/node-red-contrib-gira-endpoint)
 [![MIT License](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/luckyy0815/node-red-contrib-gira-endpoint/master/LICENSE.md)
 # node-red-contrib-gira-endpoint
 
@@ -11,7 +11,7 @@ Integrate your Gira Homeserver devices with <b>Node-RED</b>
 
 Install with the built in <b>Node-RED Palette manager</b> or using npm:
 ```
-npm install red-contrib-gira-endpoint
+npm install node-red-contrib-gira-endpoint
 ```
 
 ### Example
