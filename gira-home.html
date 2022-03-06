@@ -1,0 +1,83 @@
+<!-- gira-home Client configuration node -->
+<script type="text/html" data-template-name="gira-home">
+    <div class="form-row">
+        <label for="node-config-input-path"><i class="fa fa-bookmark"></i> Adresse / Hostname</label>
+        <input id="node-config-input-path" type="text" placeholder="192.168.0.11">
+    </div>
+     <div class="form-row">
+        <label for="node-config-input-username"><i class="fa fa-user"></i> Username</label>
+        <input id="node-config-input-username" type="text" placeholder="">
+    </div>
+
+    <div class="form-row">
+        <label for="node-config-input-password"><i class="fa fa-lock"></i> Password</label>
+        <input id="node-config-input-password" type="password" placeholder="">
+    </div>
+    <div class="form-row node-config-row-tls hide">
+        <label for="node-config-input-tls"> TLS-Konfiguration</label>
+        <input type="text" id="node-config-input-tls">
+    </div>
+   <div class="form-row" style="display: flex; align-items: center; min-height: 34px">
+        <label for="node-config-input-ssl"> SSL verwenden</label>
+        <input type="checkbox" style="margin: 0 8px; width:auto" id="node-config-input-ssl">
+    </div>
+    <div class="form-tips">
+        <p>URL sollte auf den Homeserver verweisen.</p>
+        Standardm&auml;&szlig;ig enth&auml;lt der <code>payload</code> die Daten, die &uuml;ber einen Gira <code>url Endpoint</code> gesendet oder empfangen werden.
+    </div>
+</script>
+
+
+
+<script type="text/javascript">
+ "use strict";
+(function() {
+        
+        function ws_label() {
+        var nodeid = this.client;
+        var wsNode = RED.nodes.node(nodeid);
+        return this.name || "gira-home";
+        console.log('String  :' + wsNode )
+    }
+
+ RED.nodes.registerType('gira-home',{
+        category: 'config',
+        defaults: {
+            path: {value:"",required:true,validate:RED.validators.regex(/^((?!\/debug\/ws).)*$/)},
+            tls: {type:"tls-config",required: false},
+            ssl: { value:false}
+        },
+         credentials: {
+            username: { type: 'text' },
+            password: { type: 'password' }
+        },
+        inputs:0,
+        outputs:0,
+        label: function() {
+            return this.path;
+        },
+        oneditprepare: function() {
+            $("#node-config-input-ssl").prop("checked");
+            $("#node-config-input-ssl").on("change", function(evt) {
+                $(".node-config-row-tls").toggle(this.checked);
+                $("#node-config-input-tls").toggle(this.checked);
+            })
+            $("#node-config-input-ssl").trigger("change");
+            
+        },
+        oneditsave: function() {
+             if (!$("#node-config-input-ssl").prop("checked")) {
+                $("#node-config-input-tls").val("_ADD_");
+            }
+        }
+    });
+
+})();
+</script>
+
+
+
+<script type="text/html" data-help-name="gira-home">
+   <p>Connect to Websocket on Gira Homeserver </p>
+   <p>Settings IP of Homeserver and Username, Password to connect Websocket</p>
+</script>

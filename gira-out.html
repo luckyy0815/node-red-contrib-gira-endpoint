@@ -1,0 +1,69 @@
+<!-- giraget out Node -->
+<script type="text/html" data-template-name="gira-out">
+    <div class="form-row">
+        <label for="node-input-client"><i class="fa fa-bookmark"></i> Hostname url</label>
+        <input type="text" id="node-input-client">
+    </div>
+    <div class="form-row" id="node-input-endpoint-row">
+        <label for="node-input-endpoint"><i class="fa fa-tag"></i> UID Adresse CO@</label>
+        <input type="text" id="node-input-endpoint" placeholder="">
+    </div>
+     <div class="form-row" style="display: flex; align-items: center; min-height: 34px">
+        <label for="node-input-allendpoints"> Alle Adressen</label>
+        <input type="checkbox" style="margin: 0 8px; width:auto" id="node-input-allendpoints">
+    </div>
+     <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="">
+    </div>
+</script>
+
+<script type="text/javascript">
+
+(function() {
+
+     function ws_label() {
+        var nodeid = this.client;
+        var wsNode = RED.nodes.node(nodeid);
+        return this.name || "gira-out";
+    }
+    
+ RED.nodes.registerType('gira-out',{
+        category: 'gira-knx',
+        defaults: {
+            name: {value:""},
+           client: {type:"gira-home"},
+           endpoint: { value: '', validate:RED.validators.regex(/^CO@|^$/)},
+           allendpoints: { value: false }
+        },
+        color:"rgb(215, 215, 160)",
+        inputs:1,
+        outputs:0,
+        icon: "white-globe.svg",
+        align: "right",
+        labelStyle: function() {
+            return this.name?"node_label_italic":"";
+        },
+        label: ws_label,
+        oneditprepare: function() {
+            $("#node-input-endpoint-row").show();
+            $("#node-input-allendpoints").on("change", function() {
+            if ( $("#node-input-allendpoints").prop("checked")) {
+                $("#node-input-endpoint-row").hide();
+                 }
+             else {
+                   $("#node-input-endpoint-row").show();
+                  }
+                
+            })
+         }       
+    });
+
+    
+
+})();
+</script>
+
+<script type="text/html" data-help-name="gira-out">
+   <p>Returns on output the Value of Gira Homeserver Kommunikations Object</p>
+</script>

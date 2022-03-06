@@ -1,0 +1,26 @@
+[
+    {
+        "id": "c0eceb5898466f6b",
+        "type": "gira-in",
+        "z": "6303e7dcc1f0c502",
+        "name": "Leuchte Wohnzimmer",
+        "client": "ad4b7c3f00105a4c",
+        "endpoint": "CO@2_0_0",
+        "allendpoints": false,
+        "x": 280,
+        "y": 200,
+        "wires": [
+            [
+                "dee7badff425a7fa"
+            ]
+        ]
+    },
+    {
+        "id": "ad4b7c3f00105a4c",
+        "type": "gira-home",
+        "path": "192.168.0.11",
+        "tls": "",
+        "ssl": false,
+        "credentials": {}
+    }
+]
