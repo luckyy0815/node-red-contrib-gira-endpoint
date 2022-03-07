@@ -28,7 +28,7 @@ This node requires configuration, Hostname or IP Adress of the Gira Homeserver a
 ![Adresse](https://user-images.githubusercontent.com/92378009/156930105-ce7ee832-d3d5-4e3e-b389-9bf9d284064b.jpg)
 
 
-<code>input</code>'s type. The Input Accept Value of true|false|String|Number if one url Endpoint in configuration.
+<code>input</code>'s type. The Input Accept Value of true|false|toggle|String|Number if one url Endpoint in configuration.
 More Value are seperat as ",".
 
 
