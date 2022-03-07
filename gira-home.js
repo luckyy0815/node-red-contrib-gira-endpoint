@@ -45,7 +45,7 @@ module.exports = function (RED) {
         var encoded = base64.encode(bytes);
 
         if (node.ssl) {
-        node.path = 'ws://' + node.path + "/endpoints/ws?authorization=" + encoded;
+        node.path = 'wss://' + node.path + "/endpoints/ws?authorization=" + encoded;
          }
         else {
         node.path = 'ws://' + node.path + "/endpoints/ws?authorization=" + encoded;
